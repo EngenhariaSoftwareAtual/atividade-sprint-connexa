@@ -1,26 +1,35 @@
 # Exemplo de referência — Sprint 1 do **PedeJá** com agente de IA
 
 **Disciplina de Engenharia de Software** · Prof. Claudio Nunes
-**Finalidade:** material de consulta para a atividade RA-02.
+**Finalidade:** material de consulta para a Atividade de Sprint.
 
-> **Por que um domínio diferente do Connexa.** Este exemplo existe para mostrar *forma*, *nível* e *grau de detalhe*, não conteúdo aproveitável. Copiar trechos daqui para o Connexa não funciona: o domínio é outro, as histórias são outras e a correção percebe. Use-o para responder "como se faz isso?", nunca "o que devo escrever?".
+> **Por que um domínio diferente do Connexa.** Este exemplo existe para mostrar *forma*, *nível* e *grau de detalhe*, não conteúdo aproveitável. Copiar trechos daqui para o Connexa não funciona: o domínio é outro e as histórias são outras. Use-o para responder "como se faz isso?", nunca "o que devo escrever?".
 >
-> **Por que não há código de framework.** De propósito. Nesta atividade, o que se avalia é a especificação, a evidência e a decisão — e é isso que o exemplo mostra.
+> **Por que não há código de framework.** De propósito. Nesta atividade, o que importa é a especificação, a evidência e a decisão — e é isso que o exemplo mostra.
 
 ---
 
 ## 1. Ponto de partida
 
-O backlog do PedeJá está no **Exemplo de referência — Backlog e Sprint 1 do PedeJá**, usado na RA-01. A equipe tem cinco integrantes, cada um com 6 horas por semana para o projeto.
+O backlog do PedeJá está no **Exemplo de referência — Backlog do PedeJá**, usado na Atividade de Requisitos. A equipe tem cinco integrantes, cada um com 6 horas por semana para o projeto.
 
-O back-end segue a proposta de arquitetura: um monolito modular com os módulos `cardapio`, `pedidos` e `entrega`. A autenticação está fora da Sprint 1, e o scaffold simula um cliente autenticado.
+O back-end segue a solução de arquitetura escolhida pela equipe: um monolito modular com os módulos `cardapio`, `pedidos` e `entrega`. A autenticação está fora da Sprint 1, e o template simula um cliente autenticado.
 
-| Integrante | Caminho de IA |
+**Parte 1 — preparação do ambiente**, como ficou registrada no post da equipe:
+
+| Item | Registro |
 |---|---|
-| Ana, Bruno, Carla | Caminho 1 — GitHub Copilot com o servidor MCP remoto |
-| Davi, Elisa | Caminho 2 — Codex com o servidor MCP local |
+| Organização no GitHub | `pedeja-turma-noite`, com os cinco integrantes, dois deles Owners, e base permission **Write** |
+| Repositório | `pedeja-app`, público, criado a partir do template Java |
+| Pull request de preparação | #1, vinculado à Task AB#100: ADR-001 (monolito modular em Java) e nome da organização em `.vscode/mcp.json` e `.codex/config.toml`; aprovado por Bruno, CI verde |
+| Proteção do `main` | Pull request com 1 aprovação, checks do CI obrigatórios, sem exceções |
 
-No PedeJá, o comando único de verificação definido pelo scaffold é `./verificar`.
+| Integrante | Caminho de IA | Teste de fumaça |
+|---|---|---|
+| Ana, Bruno, Carla | Caminho 1 — GitHub Copilot com o servidor MCP remoto | ok |
+| Davi, Elisa | Caminho 2 — Codex com o servidor MCP local | ok, depois de trocar `npx` por `cmd /c npx` no Windows de Elisa |
+
+No PedeJá, o comando único de verificação definido pelo template é `./verificar`.
 
 ---
 
@@ -55,7 +64,9 @@ Alvo da primeira sprint (75%) ...................  33h
 
 **A folga de 9h não foi preenchida.** A equipe avaliou a US-07 (Informar endereço de entrega, cerca de 8h). Ela caberia na capacidade, mas não sustenta a meta: endereço só importa para enviar o pedido, que está fora desta sprint. Como é a primeira sprint com o fluxo do agente, a folga ficou como reserva. A decisão está na justificativa da seleção.
 
-**Comparação.** No plano feito sem agente (exemplo da RA-01), as mesmas duas histórias somavam 34h. A redução veio da implementação. O esforço de especificar, verificar e revisar **não** diminuiu — e, como mostra o encerramento, foi maior do que o previsto.
+**Registro na ferramenta.** Na aba *Capacity*, cada integrante ficou com 0,6 h por dia: 33h ÷ 5 integrantes ÷ 10 dias úteis, arredondado para baixo. Assim, as barras de *Work details* comparam o plano com o alvo, e não com a capacidade bruta.
+
+**Onde fica o esforço.** Com o agente, a implementação consome menos horas das pessoas. O esforço de especificar, verificar e revisar **não** diminui — e, como mostra o encerramento, foi maior do que o previsto.
 
 ---
 
@@ -284,6 +295,7 @@ Os testes automatizados verificavam a API, e a API estava certa. Foi a execuçã
 
 | Ponto | Onde aparece |
 |---|---|
+| O primeiro pull request já testa a cadeia work item → commit → pull request | Seção 1 |
 | Com agente, o esforço cai na implementação, mas não na verificação | Seções 2 e 9 |
 | Folga de capacidade não justifica item que não sustenta a meta | Seção 2 |
 | Tarefas por fatia vertical, nunca por camada | Seção 3 e decisão D1 |
